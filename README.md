@@ -7,14 +7,15 @@ illustrates an issue with data migrations when doing functional tests
 the issue at a glance
 ---------------------
 
-look at `functional_tests/test_site.py` and `reproduction/tests/test_model`. They both have two tests that 
-count the TestModel, expecting to find 4, since 4 is created in the data migration in 
+look at `functional_tests/test_site.py` and `reproduction/tests/test_model`.
+They both have two tests that count the TestModel, expecting to find 4, since 4
+is created in the data migration in
 `reproduction/migrations/0002_data_migration.py`.
 
 The output of the tests are
 
 ```
- $ python manage.py test
+ $ python3 manage.py test
 Creating test database for alias 'default'...
 ...F
 ======================================================================
@@ -32,5 +33,5 @@ FAILED (failures=1)
 Destroying test database for alias 'default'...
 ```
 
-So the unittest finds all 4 TestModels each time, but the functional test wipes the database clean after the first 
-test is run
+So the unittest finds all 4 TestModels each time, but the functional test wipes
+the database clean after the first test is run
